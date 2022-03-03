@@ -1,4 +1,5 @@
 const express = require('express');
+const faker = require('faker');
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -113,4 +114,18 @@ app.get('/users', (req, res) => {
   } else {
     res.send('No hay parámetros');
   }
+});
+
+app.get('/list-products', (req, res) => {
+  const listP = [];
+
+  for (let i = 0; i < 100; i++) {
+    listP.push({
+      name: faker.commerce.productName(),
+      price: parseInt(faker.commerce.price(), 10),
+      image: faker.image.imageUrl(),
+    });
+  }
+
+  res.json(listP);
 });
