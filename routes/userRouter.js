@@ -1,10 +1,10 @@
 const express = require('express');
-const Router = express.Router();
+const router = express.Router();
 
 /*El query del request nos permite hacer peticiones con
 argumentos no obligatorios, usado en paginación y filtros*/
 
-Router.get('/', (req, res) => {
+router.get('/', (req, res) => {
   const { limit, offset } = req.query;
 
   if (limit && offset) {
@@ -17,4 +17,13 @@ Router.get('/', (req, res) => {
   }
 });
 
-module.exports = Router;
+router.get('/:limit/:country', (req, res) => {
+  const { limit, country } = req.params;
+  const {city} = req.query;
+
+  // city ? res.json({
+
+  // })
+});
+
+module.exports = router;

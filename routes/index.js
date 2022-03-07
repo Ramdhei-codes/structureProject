@@ -2,13 +2,18 @@ const express = require('express');
 const productRouter = require('./productRouter');
 const userRouter = require('./userRouter');
 const categoryRouter = require('./categoryRouter');
+const departmentsRouter = require('./departmentsRouter');
 
 function routerApi(app) {
   const router = express.Router();
+  //Static route of the API
   app.use('/api/v1', router);
-  app.use('/api/v1/products', productRouter);
-  app.use('/api/v1/users', userRouter);
-  app.use('/api/v1/categories', categoryRouter);
+
+  //Endpoints for resources
+  router.use('/products', productRouter);
+  router.use('/users', userRouter);
+  router.use('/categories', categoryRouter);
+  router.use('/departments', departmentsRouter);
 }
 
 module.exports = routerApi;
